@@ -48,19 +48,18 @@ def encode(number, base):
     #return the final numbe result as a string
     #somehow deal with hex digits
 
+    #all digits and letters 0-9 a-z
     digits_and_letters = string.digits + string.ascii_letters
-    print(digits_and_letters)
-    new_number = number
-    final_digits = ""
-    while new_number > 0:
-        #print("divisor", new_number)
-        remainder = new_number % base
+    
+    final_digits = "" #empty string to fill final vaule
+    while number > 0: 
+        # use remainder method 
+        remainder = number % base
         if base == 16:
             remainder = digits_and_letters[remainder]
-        print("remainder", remainder)
-        new_number = new_number // base
+        number = number // base
         final_digits += str(remainder)
-    #print(final_digits)
+    
     return final_digits[::-1]
     
         
@@ -82,7 +81,8 @@ def convert(digits, base1, base2):
     # TODO: Convert digits from base 10 to base 16 (and vice versa)
     # ...
     # TODO: Convert digits from any base to any base (2 up to 36)
-    
+    string = decode(digits, base1)
+    return encode(string, base2)
 
 
 def main():
@@ -103,8 +103,9 @@ def main():
 
 if __name__ == '__main__':
     #main()
-    print(encode('1',2)) #1
-    print(encode('5',10)) #5
-    print(encode('10',16)) #a
-    print(encode('9781876',25)) #101101
+   
+    #print(encode(5,10)) #5
+    #print(encode(10,16)) #a
+    #print(encode(9781876,25)) #101101
+    print (encode(1234, 32))#16i
 
