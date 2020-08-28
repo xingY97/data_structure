@@ -52,13 +52,15 @@ def encode(number, base):
     digits_and_letters = string.digits + string.ascii_letters
     
     final_digits = "" #empty string to fill final vaule
+
     while number > 0: 
         # use remainder method 
         remainder = number % base
-        number -= remainder
+        number = number - remainder
         number = number // base
+
         if remainder > 9:
-            remainder = string.ascii_lowercase[remainder-10]
+            remainder = string.ascii_lowercase[remainder-10] # -10 get rid off 10 integer numbers
         final_digits += str(remainder)
     
     return final_digits[::-1]
