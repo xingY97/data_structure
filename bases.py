@@ -21,13 +21,13 @@ def decode(digits, base):
     for i in range(len(digits)):
         #check if digits contain letters
         if digits[i].isalpha():
-            #if yes, use .index to find the index of the match letter
-            value = string.ascii_lowercase.index(digits[i].lower()) + 10 #added 10 because 0-9 before Hex string
+            #if yes, use .index to find the position index of the match letter
+            match_value = string.ascii_lowercase.index(digits[i].lower()) + 10  #added 10 because 0-9 before Hex string
         else:
             #if not, use int to convert number into decimal string.
-            value = int(digits[i])
+            match_value = int(digits[i])
             #get sum by adding value * base to whatever power it is base on the length of the digits.
-        sum += value * (base ** (len(digits) -i - 1)) #-1 to reverse the digits since read from righ to left.
+        sum += match_value * (base ** (len(digits) -i - 1)) #-1 to reverse the digits since read from righ to left.
         
     return sum
 
@@ -48,11 +48,12 @@ def encode(number, base):
     #return the final numbe result as a string
     #somehow deal with hex digits
 
-    #all digits and letters 0-9 a-z
+    #all digits and letters 0-9 a-z 
     digits_and_letters = string.digits + string.ascii_letters
     
     final_digits = "" #empty string to fill final vaule
 
+    #loop will stop to a point where it cant not be divided by base anymore
     while number > 0: 
         # use remainder method 
         remainder = number % base
@@ -107,7 +108,7 @@ def main():
 if __name__ == '__main__':
     #main()
    
-    #print(encode(5,10)) #5
+    print(encode(5,10)) #5
     #print(encode(10,16)) #a
     #print(encode(9781876,25)) #101101
     print (encode(1234, 32))#16i
