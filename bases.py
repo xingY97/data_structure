@@ -55,9 +55,10 @@ def encode(number, base):
     while number > 0: 
         # use remainder method 
         remainder = number % base
-        if base == 16:
-            remainder = digits_and_letters[remainder]
+        number -= remainder
         number = number // base
+        if remainder > 9:
+            remainder = string.ascii_lowercase[remainder-10]
         final_digits += str(remainder)
     
     return final_digits[::-1]
