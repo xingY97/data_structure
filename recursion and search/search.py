@@ -54,7 +54,7 @@ def binary_search_iterative(array, item):
         #if the target item is less than right side, look through right side of array
       elif item < array[middle_index]:
         right = middle_index - 1
-        #if the tatget item is less than left side, look through righ side of array
+        #if the tatget item is greater than left side, look through righ left of array
       elif item > array[middle_index]:
         left = middle_index + 1
 
